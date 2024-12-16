@@ -1,4 +1,4 @@
-﻿# Função para resolver o nome do dispositivo via IP
+﻿# resolver o nome do dispositivo via IP
 function Resolve-HostName {
     param (
         [string]$IPAddress
@@ -36,7 +36,7 @@ function Resolve-HostName {
     }
 }
 
-# Função para identificar o fabricante a partir do MAC Address
+# identificar o fabricante a partir do MAC Address
 function Get-MACVendor {
     param (
         [string]$MACAddress
@@ -50,7 +50,7 @@ function Get-MACVendor {
     }
 }
 
-# Função para verificar dispositivos conhecidos
+# verificar dispositivos conhecidos
 function Is-KnownDevice {
     param (
         [string]$MACAddress
@@ -62,7 +62,7 @@ function Is-KnownDevice {
     return $knownDevices -contains $MACAddress
 }
 
-# Função de Bruteforce para portas padrão
+# Bruteforce para portas padrão conhecidas
 function Bruteforce-Ports {
     param (
         [string]$IPAddress,
@@ -76,7 +76,7 @@ function Bruteforce-Ports {
     return $results
 }
 
-# Determina os intervalos de rede
+# intervalos de redes
 try {
     $networkRanges = Get-NetworkRange
 } catch {
@@ -84,7 +84,7 @@ try {
     exit
 }
 
-# Executa uma varredura em todos os intervalos de rede
+# varrer em todos os intervalos de rede
 $deviceList = @()
 foreach ($networkRange in $networkRanges) {
     $arpTable = arp -a | ForEach-Object {
@@ -130,11 +130,11 @@ foreach ($networkRange in $networkRanges) {
     }
 }
 
-# Exporta resultados para CSV e JSON
+# Exporta resultados CSV e JSON
 $deviceList | Export-Csv -Path "DispositivosRede.csv" -NoTypeInformation
 $deviceList | Select-Object -Property * | ConvertTo-Json -Depth 3 | Set-Content -Path "DispositivosRede.json"
 
-# Exibe os dispositivos encontrados em uma tabela e interface gráfica
+# Exibe os dispositivos encontrados na tabela e na interface gráfica
 Write-Output "Dispositivos na rede:" | Write-Host -ForegroundColor Green
 $deviceList | Format-Table -AutoSize
 $deviceList | Out-GridView -Title "Dispositivos na Rede"
