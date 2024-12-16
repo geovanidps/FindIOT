@@ -4,6 +4,7 @@ O script realiza ainda uma exportação do resultado para CVS e Json com uma tab
 
 # Exemplo do resultado:
 
+![image](https://github.com/user-attachments/assets/82081e9d-8ffa-4aca-a23f-512d48858bef)
 
 
 
