@@ -1,6 +1,10 @@
 # FindIOT
-Identifique equipamentos conectados a sua rede local cabeada ou wifi o FindIOT busca informações dos equipamentos tais como IP, MAC, Produto e Hostname e ainda tenta validar as portas mais comuns abertas.
+Identifique equipamentos conectados a sua rede local cabeada ou wifi o FindIOT busca informações do fabricante dos equipamentos tais como IP, MAC, Produto e Hostname e ainda tenta validar as portas mais comuns abertas.
 O script realiza ainda uma exportação do resultado para CVS e Json com uma tabela em interface gráfica
+
+# Requesitos:
+Ter instalado na máquina nbtstat ou nmap, executar o mesmo com perfil de admin.
+
 
 # Exemplo do resultado:
 
